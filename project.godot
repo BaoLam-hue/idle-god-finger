@@ -14,6 +14,12 @@ config/name="Idle God Finger"
 run/main_scene="uid://cn2hkwbo160yj"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 
+[autoload]
+
+GameManager="*uid://yus258yq1wys"
+AudioManager="*uid://ds1gwh0ef4k0e"
+SaveSystem="*uid://bvpkrmyoenn1n"
+
 [dotnet]
 
 project/assembly_name="Idle God Finger"
