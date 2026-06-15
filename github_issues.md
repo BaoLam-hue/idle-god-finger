@@ -86,7 +86,7 @@
 
 #### Tasks
 
-- [ ] Implement `src/gameplay/character/Pathfinder.cs`: A\* over the dungeon tile graph
+- [ ] Implement `src/gameplay/character/Pathfinder.cs`: AI pathfinds over the dungeon tile graph
 - [ ] Walkable tiles: `Floor`, `Entrance`, `Exit`
 - [ ] Public API: `List<Vector2i> FindPath(Vector2i from, Vector2i to)`
 - [ ] Cache invalidation on room reveal or tile state change
