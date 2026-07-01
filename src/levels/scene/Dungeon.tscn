@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://di7dkerupa62u"]
 
-[ext_resource type="Script" uid="uid://c0o5vvgvty8ex" path="res://src/levels/scripts/Dungeon.cs" id="1_0ujnb"]
-[ext_resource type="Script" uid="uid://br16rc68r2soc" path="res://src/levels/scripts/DungeonPainter.cs" id="1_odqlx"]
+[ext_resource type="Script" uid="uid://c0o5vvgvty8ex" path="res://src/levels/scripts/dungeonGeneration/Dungeon.cs" id="1_odqlx"]
+[ext_resource type="Script" uid="uid://br16rc68r2soc" path="res://src/levels/scripts/dungeonGeneration/DungeonPainter.cs" id="2_jgm1o"]
 [ext_resource type="Texture2D" uid="uid://b5wowtv18fsbh" path="res://assets/art/world/oryx_world.png" id="2_odqlx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jgm1o"]
@@ -1777,11 +1777,11 @@ tile_size = Vector2i(24, 24)
 sources/0 = SubResource("TileSetAtlasSource_jgm1o")
 
 [node name="Dungeon" type="Node" unique_id=1160271869 node_paths=PackedStringArray("Painter")]
-script = ExtResource("1_0ujnb")
+script = ExtResource("1_odqlx")
 Painter = NodePath("DungeonPainter")
 
 [node name="DungeonPainter" type="Node" parent="." unique_id=1610042583 node_paths=PackedStringArray("FloorLayer", "WallLayer")]
-script = ExtResource("1_odqlx")
+script = ExtResource("2_jgm1o")
 FloorLayer = NodePath("FloorLayer")
 WallLayer = NodePath("WallLayer")
 
