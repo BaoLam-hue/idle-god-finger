@@ -1778,8 +1778,6 @@ sources/0 = SubResource("TileSetAtlasSource_jgm1o")
 
 [node name="Dungeon" type="Node" unique_id=1160271869 node_paths=PackedStringArray("Painter")]
 script = ExtResource("1_0ujnb")
-Width = 48
-Height = 27
 Painter = NodePath("DungeonPainter")
 
 [node name="DungeonPainter" type="Node" parent="." unique_id=1610042583 node_paths=PackedStringArray("FloorLayer", "WallLayer")]

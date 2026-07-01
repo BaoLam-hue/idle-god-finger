@@ -15,9 +15,9 @@ public partial class DungeonPainter : Node
         {
             for (int y = 0; y < map.Height; y++)
             {
-                var type = map.GetTile(x, y);
-                var cell = new Vector2I(x, y);
-                var atlasCoordinate = TileAtlas.GetAtlas(type);
+                TileType type = map.GetTile(x, y);
+                Vector2I cell = new Vector2I(x, y);
+                Vector2I atlasCoordinate = TileAtlas.GetAtlas(type);
 
                 // Walls and Void go on the wall layer; everything else on the floor layer
                 if (type is TileType.Wall or TileType.Void)

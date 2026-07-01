@@ -1,29 +1,27 @@
+using System;
 using Godot;
 namespace IdleGodFinger;
 
 public partial class Dungeon : Node
 {
-	[Export] public int Width = 10;
-	[Export] public int Height = 10;
+	[Export] public int Width = 100;
+	[Export] public int Height = 100;
+	[Export] public int MaxDepth = 4; // higher = more rooms, smaller rooms
+	[Export] public int Seed = 0;    // 0 = random each run
 	[Export] public DungeonPainter Painter = null!;
 
 	[Signal] public delegate void DungeonGeneratedEventHandler(Map map);
 
 	public override void _Ready()
 	{
-		var map = new Map(Width, Height);
+		Random rng = Seed == 0 ? new Random() : new Random(Seed);
+		Map map = new Map(Width, Height);
 
-		// place the box code here
-		for (int x = 0; x < Width; x++)
-		{
-			for (int y = 0; y < Height; y++)
-			{
-				bool isBorder = x == 0 || x == Width - 1 || y == 0 || y == Height - 1;
-				map.SetTile(x, y, isBorder ? TileType.Wall : TileType.Floor);
-			}
-		}
+		Rect2I bounds = new Rect2I(0, 0, Width, Height);
+		BspNode root = BspSplitter.Build(bounds, rng, MaxDepth);
+		BspSplitter.CarveIntoMap(root, map);
+
 		Painter.Paint(map);
-
 		EmitSignal(SignalName.DungeonGenerated, map);
 	}
 }
