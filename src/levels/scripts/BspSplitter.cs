@@ -1,7 +1,4 @@
 using System;
-using System.Numerics;
-using System.Security.Cryptography;
-using System.Xml.Serialization;
 using Godot;
 using IdleGodFinger;
 
@@ -130,32 +127,20 @@ public class BspSplitter
     {
         // Fill with void
         for (int x = 0; x < map.Width; x++)
-        {
             for (int y = 0; y < map.Height; y++)
-            {
                 map.SetTile(x, y, TileType.Void);
-            }
-        }
 
         // Carve rooms and corridors as floor
         foreach (var leaf in root.Leaves())
-        {
             CarveRect(leaf.Room, map);
-        }
 
         ConnectChildren(root, map);
 
         // Second pass — any void tile touching a floor tile becomes a wall
         for (int x = 0; x < map.Width; x++)
-        {
             for (int y = 0; y < map.Height; y++)
-            {
                 if (map.GetTile(x, y) == TileType.Void && IsAdjacentToFloor(x, y, map))
-                {
                     map.SetTile(x, y, TileType.Wall);
-                }
-            }
-        }
     }
 
     private static bool IsAdjacentToFloor(int x, int y, Map map)
