@@ -19,7 +19,7 @@ public partial class Dungeon : Node
 
 		Rect2I bounds = new Rect2I(0, 0, Width, Height);
 		BspNode root = BspSplitter.Build(bounds, rng, MaxDepth);
-		BspSplitter.CarveIntoMap(root, map);
+		RoomPlacer.CarveIntoMap(root, map);
 
 		Painter.Paint(map);
 		EmitSignal(SignalName.DungeonGenerated, map);
